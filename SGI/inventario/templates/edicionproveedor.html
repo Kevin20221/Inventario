@@ -1,0 +1,30 @@
+{% extends "./base.html" %}
+
+{% block title %} GESTION DE INVENTARIO {% endblock %}
+
+{% block body %}
+<div class="card">
+    <div class="card-body">
+        <form action="/editarproveedor/" method="POST"> {% csrf_token %}
+            <div class="form group ">
+                <input type="text" id="id" name="id" class="form-control" placeholder="Digita el id" value="{{proveedoras.id}}" minlength="1" maxlength="1000000"  readonly required>
+            </div>
+            <div class="form group ">
+                <input type="text" id="txtnombre" name="txtnombre" class="form-control" placeholder="Digita el nombre" value="{{proveedoras.nombreproveedora}}" maxlength="100" required>
+            </div>
+            <div class="form group ">
+                <input type="text" id="txtdireccion" name="txtdireccion" class="form-control" placeholder="Digite la direccion" value="{{proveedoras.direcciones}}"  maxlength="100" required>
+            </div>
+            <div class="form group ">
+                <input type="text" id="txttel" name="txttel" class="form-control" minlength="1" placeholder="Digita el telefono" value="{{proveedoras.contacto}}"  maxlength="1000000000000000" value="" required>
+            </div>
+            <div class="form group ">
+                <input type="text" id="txtcorreo" name="txtcorreo" class="form-control" minlength="1" placeholder="Digita el correo"  value="{{proveedoras.correo}}" maxlength="1000000000000000" value="" required>
+            </div>
+            <div class="form group ">
+               <button type="submit" class="btn btn-success btn-block text-white">AGREGAR</button>
+            </div>
+        </form>
+    </div>
+   </div>
+{% endblock %}

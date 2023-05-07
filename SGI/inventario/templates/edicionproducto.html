@@ -1,0 +1,29 @@
+{% extends "./base.html" %}
+
+{% block title %} GESTION DE INVENTARIO {% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>EDICION DE PRODUCTOS</h2>
+        <div class="card">
+         <div class="card-body">
+             <form action="/editarproducto/" method="POST"> {% csrf_token %}
+                 <div class="form group ">
+                     <input type="text" id="txtcodigo" name="txtcodigo" value="{{productos.codigo}}" class="form-control" placeholder="Digita el codigo" minlength="1" maxlength="1000000" required readonly>
+                 </div>
+                 <div class="form group ">
+                     <input type="text" id="txtnombre" name="txtnombre" value="{{productos.nombre}}" class="form-control" placeholder="Digita el nombre" maxlength="100" required>
+                 </div>
+                 <div class="form group ">
+                     <input type="text" id="numcantidad" name="numcantidad" value="{{productos.cantidad}}" class="form-control" minlength="1" maxlength="1000000" value="1" required>
+                 </div>
+                 <div class="form group ">
+                    <button type="submit" class="btn btn-success btn-block text-white">EDITAR</button>
+                 </div>
+             </form>
+         </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

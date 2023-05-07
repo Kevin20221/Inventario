@@ -1,0 +1,88 @@
+body{
+    background-color: whitesmoke;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    background-image: url();
+    text-align: center;
+    
+   
+    
+    
+}
+main{
+    text-align: center;
+    
+}
+
+div{
+    color: white;
+    transform: translateX(1%) translateY(1%);
+    padding: 10px;
+    
+}
+h1{
+    padding-left: 85px;
+    font-family: Arial, Helvetica, sans-serif;
+    transform: translateX(-6%) translateY(-30%);
+    letter-spacing: 2px;
+    word-spacing: 4px;
+    transform: translateX(-2%) translateY(10%);
+    color: white;
+
+}
+h2{
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    letter-spacing: 2px;
+    word-spacing: 4px;
+    transform: translateX(1%) translateY(10%);
+
+}
+form{
+    width: 50%;
+    background-color: gray;
+    margin: auto;
+    color: gold;
+    text-align: center;
+    transform: translateX(-15%) translateY(30%);
+    border: none;
+    outline: none;
+    
+    
+    
+
+
+}
+
+input{
+    padding: 10px;
+}
+::placeholder{
+    text-align: center;
+    border: 5px;
+   
+}
+button{
+    text-align: center;
+    background-color: rgb(50, 17, 235);
+    color:white;
+    padding: 10px;
+    outline: none;
+    border: none;
+    padding-top: 10px;
+    transform: translateX(-1%) translateY(10%);
+
+}
+
+.input{
+  width: 100%;
+  transform: translateX(-6%) translateY(-30%);
+  text-align: left;
+}
+label{
+    text-align: left;
+}
+img{
+    transform: translateX(5%) translateY(1%);
+}

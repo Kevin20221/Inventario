@@ -1,0 +1,41 @@
+
+
+{% extends "./base.html" %}
+
+{% block title %} GESTION DE FACTURAS{% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <h2>EDITAR FACTURA</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editarfactura/" method="POST"> {% csrf_token %}
+                    <div class="form group ">
+                        <input type="text" id="txtfactura" name="txtfactura" value="{{facturas.numerofactura}}" class="form-control" placeholder="Digita numero factura" minlength="1" maxlength="1000000"  readonly required>
+                    </div>
+                    <div class="form group ">
+                        <input type="text" id="txtcliente" name="txtcliente" value="{{facturas.cliente}}" class="form-control" placeholder="Digita el cliente" maxlength="100" required>
+                    </div>
+                    <div class="form group ">
+                        <input type="text" id="txtestado" name="txtestado" value="{{facturas.estado}}" class="form-control" placeholder="Digita el estado" maxlength="100" required>
+                    </div>
+                    <div class="form group ">
+                        <input type="text" id="valor" name="valor" class="form-control" value="{{facturas.valor}}" minlength="1" placeholder="Digita el valor" maxlength="1000000000000000" value="" required>
+                    </div>
+                    <div class="form group ">
+                       <button type="submit" class="btn btn-success btn-block text-white">AGREGAR</button>
+                    </div>
+
+
+    </form>
+</div>
+                </form>
+            </div>
+           </div>
+            </div>
+
+    </div>
+
+    {% endblock %}

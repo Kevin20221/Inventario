@@ -1,0 +1,113 @@
+{% extends "./base.html" %}
+
+{% block title %} FACTURAS {% endblock %}
+
+{% block buscador %}
+
+<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar search"
+method="GET">
+  {% csrf_token %}
+  <div class="input-group">
+    <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." name="buscar" value="{{ request.POST.buscar }}">
+    <div class="input-group-append">
+      <button class="btn btn-primary" type="submit">
+        <i class="fas fa-search fa-sm"></i>
+      </button>
+    </div>
+
+
+  </div>
+
+
+    </form>
+
+{% endblock buscador %}
+
+{% block body %}
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        {% if messages %}
+        {% for message in messages %}
+
+        <div class="alert alert-dismissible alert-success">
+            <button type=" button" class="close" data-dismiss="alert">&times;</button>
+            <strong class="text-dark">{{ message }}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <h2>AGREGAR FACTURA</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registrarfactura/" method="POST"> {% csrf_token %}
+                    <div class="form group ">
+                        <input type="text" id="txtfactura" name="txtfactura" class="form-control" placeholder="Digita numero factura" minlength="1" maxlength="1000000" required>
+                    </div>
+                    <div class="form group ">
+                        <input type="text" id="txtcliente" name="txtcliente" class="form-control" placeholder="Digita el cliente" maxlength="100" required>
+                    </div>
+                    <div class="form group ">
+                        <input type="text" id="txtestado" name="txtestado" class="form-control" placeholder="Digita el estado" maxlength="100" required>
+                    </div>
+                    <div class="form group ">
+                        <input type="text" id="valor" name="valor" class="form-control" minlength="1" placeholder="Digita el valor" maxlength="1000000000000000" value="" required>
+                    </div>
+                    <div class="form group ">
+                       <button type="submit" class="btn btn-success btn-block text-white">AGREGAR</button>
+                    </div>
+                    
+
+                </form>
+            </div>
+           </div>
+            </div>
+
+
+
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <h1>LISTA DE FACTURAS</h1>
+
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+method="GEST">
+  {% csrf_token %}
+  <div class="input-group">
+    <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar factura" name="buscar" value="{{ request.POST.buscar }}">
+    <div class="input-group-append">
+      <button class="btn btn-primary" type="submit">
+        <i class="fas fa-search fa-sm"></i>
+      Buscar </button>
+    </div>
+  </div>
+</form>
+
+        
+        <div class="table-borderless"></div>
+        <table class="table table-striped">
+            <tr>
+                <th>Numero factura</th>
+                <th>Cliente</th>
+                <th>Estado</th>
+                <th>Valor</th>
+                <th colspan="">Opciones</th>
+            </tr>
+            <tbody>
+                {% for c in facturas %}
+                <tr>
+                    <td>{{c.numerofactura}}</td>
+                    <td>{{c.cliente}}</td>
+                    <td>{{c.estado}}</td>
+                    <td>{{c.valor}}</td>
+                    <td><a href="edicionfactura/{{c.numerofactura}}"class="btn btn-info">EDITAR</a></td>
+                    <td><a href="eliminarfactura/{{c.numerofactura}}"class="btn btn-danger btneliminar">ELIMINAR</a></td>
+                    <td><a href="{% url 'descargar_facturas' %}" class="btn btn-primary">Descargar facturas</a></td>
+
+                </tr>
+
+                {% endfor %}
+            </tbody>
+
+        </table>
+        
+    </div>
+</div>
+{% endblock %}
